@@ -1,19 +1,19 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import AddItem from './components/AddItem'
 import Header from './components/Header'
 import ItemList from './components/ItemList'
 import Footer from './components/Footer'
 
-const data = [
-  { id: 1, text: 'Item 1', isChecked: false },
-  { id: 2, text: 'Item 2', isChecked: false },
-  { id: 3, text: 'Item 3', isChecked: true },
-  { id: 4, text: 'Item 4', isChecked: false },
-  { id: 5, text: 'Item 5', isChecked: true },
-]
-
 const App = () => {
-  const [items, setItems] = useState(data)
+  const [items, setItems] = useState([])
+
+  useEffect(() => {
+    setItems(JSON.parse(localStorage.getItem('list')) || [])
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem('list', JSON.stringify(items))
+  }, [items])
 
   const toggleChecked = (id) => {
     setItems((prev) =>
