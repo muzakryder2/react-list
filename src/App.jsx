@@ -49,7 +49,7 @@ const App = () => {
             toggleChecked={toggleChecked}
             removeItem={removeItem}
           />
-          <div className='container d-flex justify-content-center mt-4'>
+          <div className='container d-flex justify-content-center my-4'>
             <button
               type='button'
               className='btn btn-warning me-3'
